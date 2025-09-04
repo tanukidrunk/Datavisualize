@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Visualization with Trust in Government Corruption</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <h3>World Economy GDP per Capita, Happiness Scores, Trust in Government Corruption, Family, and Health Life Expectancy</h3>
+    <div id="chart_div" style="min-height:600px;"></div>
+</body>
+<script>
+    google.charts.load('current', {packages:['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawMultSeries);
+
+    function drawMultSeries() {
+        var data = google.visualization.arrayToDataTable([
+            ['Country', 'Happiness Scores', { role: 'annotation' }, 'GDP per Capita', { role: 'annotation' }, 'Family', { role: 'annotation' }, 'Health Life Expectancy', { role: 'annotation' }, 'Trust in Government Corruption', { role: 'annotation' }],
+            ['Thailand',  0.860217911, '0.860', 
+                          0.597115559, '0.597', 
+                          0.882, '0.882', 
+                          0.681, '0.681',  
+                          0.056, '0.056'],
+            
+        ]);
+
+        var options = {
+            title: 'Happiness Scores, Economy GDP per Capita, Family, Health Life Expectancy and Trust in Government Corruption',
+            hAxis: {title: 'Country'},
+            vAxis: {title: 'Score'},
+            seriesType: 'bars',
+             
+            annotations: {
+                alwaysOutside: true,
+                textStyle: {
+                    fontSize: 16,
+                    auraColor: 'none',
+                    color: '#010a05'  // สีของตัวเลขเป็นสีเขียว
+                }
+            }
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+</html>
+6iu67iii6i
+

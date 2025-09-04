@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Visualization with Trust in Government Corruption</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <h3>World Economy GDP per Capita, Happiness Scores, and Trust in Government Corruption</h3>
+    <div id="chart_div" style="min-height:600px;"></div>
+</body>
+<script>
+    google.charts.load('current', {packages:['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawMultSeries);
+
+    function drawMultSeries() {
+        var data = google.visualization.arrayToDataTable([
+            ['Country',  'Happiness Score', 'Family',  ],
+            ['Denmark       '  ,1.     ,1.16374],
+            ['Switzerland   '  ,0.99774,1.14524],
+            ['Iceland       '  ,0.99667,1.18326],
+            ['Norway        '  ,0.99627,1.12690],
+            ['Finland       '  ,0.98498,1.13464],
+            ['Canada        '  ,0.98378,1.09610],
+            ['Netherlands   '  ,0.97515,1.02912],
+            ['New Zealand   '  ,0.97448,1.17278],
+            ['Australia     '  ,0.97169,1.10476],
+            ['Sweden        '  ,0.96877,1.08764],
+            ['Austria       '  ,0.94592,1.08383],
+            ['United States '  ,0.94393,1.04782],
+            ['Costa Rica    '  ,0.94167,1.02152],
+            ['Puerto Rico   '  ,0.93529,1.08113],
+            ['Germany       '  ,0.92931,1.09774],
+            ['Brazil        '  ,0.92373,1.03938],
+            ['Belgium       '  ,0.92067,1.05249],
+            ['Ireland       '  ,0.91775,1.16157],
+            ['Luxembourg    '  ,0.91297,1.03999],
+            ['United Kingdom'  ,0.89357,1.08672],
+            ['Argentina     '  ,0.88360,1.06612],
+            ['Czech Republic'  ,0.87643,1.00793],
+            ['Uruguay       '  ,0.86965,1.03143],
+            ['Malta         '  ,0.86208,1.09879],
+            ['Colombia      '  ,0.86115,1.02169],
+            ['France        '  ,0.86075,1.00508],
+            ['Thailand      '  ,0.86022,1.04477],
+            ['Spain         '  ,0.84520,1.12945],
+            ['Venezuela     '  ,0.80840,1.03302],
+            ['Slovakia      '  ,0.80760,1.08268],
+            ['Uzbekistan    '  ,0.79551,1.16810],
+            ['Italy         '  ,0.79418,1.04167],
+            ['Japan         '  ,0.78674,1.06054],
+            ['Russia        '  ,0.77810,1.05261],
+            ['Poland        '  ,0.77531,1.04685],
+            ['Lithuania     '  ,0.77239,1.06411],
+            ['Belarus       '  ,0.77093,1.04993],
+            ['Slovenia      '  ,0.76641,1.05613],
+            ['Turkmenistan  '  ,0.75179,1.03817],
+            ['Paraguay      '  ,0.73585,1.11111],
+            ['Estonia       '  ,0.73306,1.05163],
+            ['Mongolia      '  ,0.65201,1.08983],
+            ['Ukraine       '  ,0.57454,1.01413],
+            
+        ]);
+
+        var options = {
+            title: 'Happiness Scores, and Family',
+            hAxis: {title: 'Country'},
+            vAxis: {title: 'Score'},
+            seriesType: 'bars',
+             
+            
+         
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Visualization with Trust in Government Corruption</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <h3>World Economy GDP per Capita, Happiness Scores, and Trust in Government Corruption</h3>
+    <div id="chart_div" style="min-height:600px;"></div>
+</body>
+<script>
+    google.charts.load('current', {packages:['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawMultSeries);
+
+    function drawMultSeries() {
+        var data = google.visualization.arrayToDataTable([
+            ['Country', 'GDP per Capita', { role: 'annotation' }, 'Happiness Score', { role: 'annotation' }, 'Trust in Government Corruption', { role: 'annotation' }],
+            ['Qatar',       1,           '1',    0.847063513, '0.847',   0.48049, '0.480',],
+            ['Luxembourg',  0.930520153, '0.931', 0.912968376, '0.913',  0.35329, '0.353',],
+            ['Singapore',   0.902032046, '0.902', 0.895429179, '0.895',  0.46987, '0.470',],
+            ['Kuwait',      0.886458693, '0.886', 0.828992825, '0.829',  0.23669, '0.237',],
+            ['Norway',      0.864696564, '0.865', 0.996279564, '0.996',  0.35776, '0.358',],
+            ['Denmark',     0.790332571, '0.790', 1,           '1',      0.44453, '0.445',],
+            ['Thailand',    0.597115559, '0.597', 0.860217911, '0.860',  0.02833, '0.028',],
+            ['Rwanda',      0.180050102, '0.180', 0.467047568, '0.467',  0.50521, '0.505',],
+            ['Burundi',     0.037445115, '0.037', 0.385995217, '0.386',  0.09419, '0.094',],
+            
+        ]);
+
+        var options = {
+            title: 'Economy GDP per Capita, Happiness Scores, and Trust in Government Corruption',
+            hAxis: {title: 'Country'},
+            vAxis: {title: 'Score'},
+            seriesType: 'bars',
+            series: {2: {type: 'line'}},
+            annotations: {
+                alwaysOutside: true,
+                textStyle: {
+                    fontSize: 12,
+                    auraColor: 'none',
+                    color: '#0ddb00'
+                }
+            }
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+</html>

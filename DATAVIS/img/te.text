@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Visualization</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <h3>World Happiness Score 2016</h3>
+    <p>
+        <span style="color:green;">?</span> Green: Happiness Score greater than 6<br>
+        <span style="color:red;">?</span> Red: Happiness Score less than 6
+    </p>
+    <div id="chart_div" style="min-height:600px;"></div>
+</body>
+<script>
+    google.charts.load('current', {packages:['corechart','bar']});
+    google.charts.setOnLoadCallback(drawMultSeries);
+
+    function drawMultSeries() {
+        var data = google.visualization.arrayToDataTable([
+            ['Country', 'Happiness Score', { role: 'style' }],
+            ['Denmark', 7.526, 'green'],
+            ['Switzerland', 7.509, 'green'],
+            ['Iceland', 7.501, 'green'],
+            ['Norway', 7.498, 'green'],
+            ['Finland', 7.413, 'green'],
+            ['Thailand', 6.474, 'green'],
+            ['Benin', 3.484, 'red'],
+            ['Afghanistan', 3.36, 'red'],
+            ['Togo', 3.303, 'red'],
+            ['Syria', 3.069, 'red'],
+            ['Burundi', 2.905, 'red'],
+        ]);
+
+        var options = {
+            title: 'World Happiness Score',
+            hAxis: {
+                title: 'Country',
+                viewWindow: {
+                    min: [0, 0, 0],
+                    max: [10, 10, 10]
+                }
+            },
+            vAxis: {
+                title: 'Happiness Score'
+            },
+            legend: 'none'  // Hide legend because we're using colors in bars
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+</html>

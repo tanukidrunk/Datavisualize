@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Visualization with Trust in Government Corruption</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <h3>World Happiness Score with Trust in Government Corruption</h3>
+    <div id="chart_div" style="min-height:600px;"></div>
+</body>
+<script>
+    google.charts.load('current', {packages:['corechart','bar']});
+    google.charts.setOnLoadCallback(drawMultSeries);
+
+    function drawMultSeries() {
+        var data = google.visualization.arrayToDataTable([
+            ['Country', 'Happiness Score', 'Trust in Government Corruption', { role: 'style' }],
+            ['Denmark', 7.526, 0.44, 'red'],      // 0.41 is Trust score
+            ['Switzerland', 7.509, 0.41, 'red'],  // 0.39 is Trust score
+            ['Iceland', 7.501, 0.14, 'red'],      // 0.50 is Trust score
+            ['Norway', 7.498, 0.35, 'red'],       // 0.43 is Trust score
+            ['Finland', 7.413, 0.41, 'red'],      // 0.38 is Trust score
+            ['Thailand', 6.474, 0.02, 'red'],
+            ['Rwanda' ,3.515,	0.50 ,'red'],     // 0.28 is Trust score
+            ['Benin', 3.484, 0.06, 'red'],          // 0.11 is Trust score
+            ['Afghanistan', 3.36, 0.07, 'red'],     // 0.05 is Trust score
+            ['Togo', 3.303, 0.11, 'red'],           // 0.07 is Trust score
+            ['Syria', 3.069, 0.17, 'red'],          // 0.13 is Trust score
+            ['Burundi', 2.905, 0.09, 'red'],        // 0.09 is Trust score
+        ]);
+
+        var options = {
+            title: 'World Happiness Score with Trust in Government Corruption',
+            hAxis: {
+                title: 'Country',
+                viewWindow: {
+                    min: [0, 0, 0],
+                    max: [10, 10, 10]
+                }
+            },
+            vAxis: {
+                title: 'Happiness Score and Trust in Government Corruption'
+            },
+            seriesType: 'bars',
+            series: {
+                0: {targetAxisIndex: 0},  // Happiness score
+                1: {targetAxisIndex: 1, type: 'line'} // Trust in Government Corruption as a line chart
+            },
+            vAxes: {
+                0: {title: 'Happiness Score'},  // Axis for Happiness Score
+                1: {title: 'Trust in Government Corruption'}  // Axis for Trust in Government Corruption
+            },
+            legend: { position: 'top' }
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+
+</script>
+</html>

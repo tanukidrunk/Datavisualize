@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Visualization</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="chart_div" style="min-height:600px;"></div>
+
+    <script type="text/javascript">
+        google.charts.load('current', {packages:['corechart', 'bar']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            $.ajax({
+                url: 'https://raw.githubusercontent.com/tanukidrunk/DATAVH/main/happy.csv',
+                dataType: 'text',
+            }).done(function(data) {
+                var lines = data.split('\n');
+                var dataArray = [['Country', 'Happiness Score']];
+                
+                for (var i = 1; i < lines.length; i++) {
+                    var row = lines[i].split(',');
+                    if (row.length >= 2) {
+                        dataArray.push([row[0], parseFloat(row[1])]);
+                    }
+                }
+
+                var chartData = google.visualization.arrayToDataTable(dataArray);
+
+                var options = {
+                    title: 'World Happiness Score',
+                    hAxis: {
+                        title: 'Country'
+                    },
+                    vAxis: {
+                        title: 'Happiness Score',
+                        minValue: 0
+                    }
+                };
+
+                var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                chart.draw(chartData, options);
+            });
+        }
+    </script>
+</body>
+</html>

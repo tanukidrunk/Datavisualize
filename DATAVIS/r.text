@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Visualization</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <div id="chart_div" style="min-height:600px;"></div>
+</body>
+<script>
+    google.charts.load('current', {packages:['corechart','bar']});
+    google.charts.setOnLoadCallback(drawMultSeries);
+
+    function drawMultSeries() {
+        var data = google.visualization.arrayToDataTable([
+            ['Country', 'Happiness Score'],
+            ['Denmark'	,7.526],
+            ['Switzerland'	,7.509],
+            ['Iceland'	,7.501],
+            ['Norway'	,7.498],
+            ['Finland'	,7.413],
+            ['Thailand', 6.474],
+            ['Burundi'	,2.905],
+            ['Syria'	,3.069],
+            ['Togo'	,3.303],
+            ['Afghanistan'	,3.36],
+            ['Benin'	,3.484],
+
+             // Add relevant countries from your CSV file
+            // Continue adding the countries you need
+        ]);
+
+        var options = {
+            title: 'World Happiness Score 2016',
+            hAxis: {
+                title: 'Country',
+                viewWindow: {
+                    min: [0, 0, 0],
+                    max: [10, 10, 10]
+                }
+            },
+            vAxis: {
+                title: 'Normalization Value'
+            }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+</html>
